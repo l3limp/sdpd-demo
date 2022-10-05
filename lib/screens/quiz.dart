@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sdpdemo/screens/score.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
@@ -19,6 +20,7 @@ List<List<String>> options = [
   ["Animals", "Fire", "Ice"]
 ];
 List<int> answers = [1, 0, 2];
+int score = 0;
 
 class _QuizState extends State<Quiz> {
   Color correctAnswer = Colors.green;
@@ -60,12 +62,22 @@ class _QuizState extends State<Quiz> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("question ${index + 1} of 3",
-                        style: const TextStyle(
-                            fontSize: 12,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w300)),
-                    const SizedBox(height: 5),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("question ${index + 1} of 3",
+                            style: const TextStyle(
+                                fontSize: 12,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w300)),
+                        Text("Score: $score/3",
+                            style: const TextStyle(
+                                fontSize: 12,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w500)),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
                     Text(questions[index],
                         style: const TextStyle(
                             fontSize: 24,
@@ -82,15 +94,20 @@ class _QuizState extends State<Quiz> {
                               chosenIndex = optionsIndex;
                               if (index < questions.length) {
                                 if (answers[index] == optionsIndex) {
+                                  score++;
                                   setState(() {
                                     optionColour = correctAnswer;
                                     optionTextColour = Colors.white;
                                   });
+
                                   Future.delayed(
                                       const Duration(milliseconds: 1000), () {
                                     chosenIndex = 4;
                                     if (index == 2) {
-                                      Navigator.pop(context);
+                                      Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Score()),
+                  );
                                     } else {
                                       setState(() {
                                         index++;
@@ -102,14 +119,28 @@ class _QuizState extends State<Quiz> {
                                     optionColour = wrongAnswer;
                                     optionTextColour = Colors.white;
                                   });
-                                  await Future.delayed(
+                                  Future.delayed(
                                       const Duration(milliseconds: 1000), () {
-                                    setState(() {
-                                      optionColour = Colors.white;
-                                      optionTextColour =
-                                          const Color.fromRGBO(30, 136, 229, 1);
-                                    });
+                                    optionColour = Colors.white;
+                                    optionTextColour =
+                                        const Color.fromRGBO(30, 136, 229, 1);
+                                    chosenIndex = 4;
+                                    if (index == 2) {
+                                      Navigator.pop(context);
+                                    } else {
+                                      setState(() {
+                                        index++;
+                                      });
+                                    }
                                   });
+                                  // await Future.delayed(
+                                  //     const Duration(milliseconds: 1000), () {
+                                  //   setState(() {
+                                  //     optionColour = Colors.white;
+                                  //     optionTextColour =
+                                  //         const Color.fromRGBO(30, 136, 229, 1);
+                                  //   });
+                                  // });
                                 }
                               } else {
                                 Navigator.pop(context);

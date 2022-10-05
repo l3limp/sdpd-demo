@@ -29,7 +29,7 @@ class Home extends StatelessWidget {
                   child: Image.asset("assets/images/disney.png")),
             ),
             const SizedBox(height: 20),
-            const Text("SDPD",
+            const Text("SDPD - demo",
                 style: TextStyle(
                     fontSize: 12,
                     color: Colors.white,
@@ -53,10 +53,12 @@ class Home extends StatelessWidget {
               alignment: Alignment.center,
               child: GestureDetector(
                 onTap: () {
+                  
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const Quiz()),
                   );
+                  
                 },
                 child: Container(
                   width: width * 0.8,
@@ -79,19 +81,6 @@ class Home extends StatelessWidget {
                 ),
               ),
             ),
-            // ElevatedButton(
-            //   style: ElevatedButton.styleFrom(
-            //       foregroundColor: Colors.white,
-            //       padding:
-            //           const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-            //       shadowColor: Colors.black,
-            //       elevation: 3),
-            //   onPressed: () {},
-            //   child: const Text(
-            //     "Christ",
-            //     style: TextStyle(fontSize: 18, color: Colors.blue),
-            //   ),
-            // ),
           ]),
         ),
       )),
