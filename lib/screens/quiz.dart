@@ -105,9 +105,11 @@ class _QuizState extends State<Quiz> {
                                     chosenIndex = 4;
                                     if (index == 2) {
                                       Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Score()),
-                  );
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const Score()),
+                                      );
                                     } else {
                                       setState(() {
                                         index++;
@@ -126,7 +128,12 @@ class _QuizState extends State<Quiz> {
                                         const Color.fromRGBO(30, 136, 229, 1);
                                     chosenIndex = 4;
                                     if (index == 2) {
-                                      Navigator.pop(context);
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const Score()),
+                                      );
                                     } else {
                                       setState(() {
                                         index++;
@@ -143,7 +150,12 @@ class _QuizState extends State<Quiz> {
                                   // });
                                 }
                               } else {
-                                Navigator.pop(context);
+                                Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const Score()),
+                                      );
                               }
                             },
                             child: Container(
