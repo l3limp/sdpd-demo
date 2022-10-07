@@ -28,9 +28,17 @@ class _QuizState extends State<Quiz> {
   Color optionColour = Colors.white;
   Color optionTextColour = const Color.fromRGBO(30, 136, 229, 1);
   int index = 0;
+  bool isEnabled = true;
 
   int chosenIndex =
       4; // to change the colour of only the option that has been selected
+
+  @override
+  void initState() {
+    // initState() is called after the object is created but before the UI is rendered
+    score = 0;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -101,7 +109,7 @@ class _QuizState extends State<Quiz> {
                                   });
 
                                   Future.delayed(
-                                      const Duration(milliseconds: 1000), () {
+                                      const Duration(milliseconds: 800), () {
                                     chosenIndex = 4;
                                     if (index == 2) {
                                       Navigator.push(
@@ -122,7 +130,7 @@ class _QuizState extends State<Quiz> {
                                     optionTextColour = Colors.white;
                                   });
                                   Future.delayed(
-                                      const Duration(milliseconds: 1000), () {
+                                      const Duration(milliseconds: 800), () {
                                     optionColour = Colors.white;
                                     optionTextColour =
                                         const Color.fromRGBO(30, 136, 229, 1);
@@ -140,22 +148,13 @@ class _QuizState extends State<Quiz> {
                                       });
                                     }
                                   });
-                                  // await Future.delayed(
-                                  //     const Duration(milliseconds: 1000), () {
-                                  //   setState(() {
-                                  //     optionColour = Colors.white;
-                                  //     optionTextColour =
-                                  //         const Color.fromRGBO(30, 136, 229, 1);
-                                  //   });
-                                  // });
                                 }
                               } else {
                                 Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const Score()),
-                                      );
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const Score()),
+                                );
                               }
                             },
                             child: Container(

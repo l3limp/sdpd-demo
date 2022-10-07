@@ -53,12 +53,10 @@ class Home extends StatelessWidget {
               alignment: Alignment.center,
               child: GestureDetector(
                 onTap: () {
-                  
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const Quiz()),
                   );
-                  
                 },
                 child: Container(
                   width: width * 0.8,

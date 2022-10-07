@@ -5,6 +5,8 @@ void main() {
   runApp(const MyApp());
 }
 
+// This app has some minor known bugs, since it was made with time constraints, and for a demonstration
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
