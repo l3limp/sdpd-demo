@@ -61,7 +61,7 @@ class _QuizState extends State<Quiz> {
                 tag: "hero, bhakti ki shakti",
                 child: Image.asset(
                   "assets/images/${images[index]}.png",
-                  height: 300,
+                  height: height * 0.28,
                 ),
               ),
               const SizedBox(height: 20),
